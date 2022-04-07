@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B718FC4F27FF35BC00662F5C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B718FC4E27FF35BC00662F5C /* CustomTextField.swift */; };
 		B7DFB6C627FE032300F1CD4E /* BreweryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DFB6C527FE032300F1CD4E /* BreweryApp.swift */; };
 		B7DFB6C827FE032300F1CD4E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DFB6C727FE032300F1CD4E /* HomeView.swift */; };
 		B7DFB6CA27FE032500F1CD4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7DFB6C927FE032500F1CD4E /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B718FC4E27FF35BC00662F5C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		B7DFB6C227FE032300F1CD4E /* Brewery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brewery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7DFB6C527FE032300F1CD4E /* BreweryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryApp.swift; sourceTree = "<group>"; };
 		B7DFB6C727FE032300F1CD4E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -35,6 +37,7 @@
 		B718FC4A27FF34BB00662F5C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B718FC4D27FF359F00662F5C /* Components */,
 				B718FC4B27FF34E000662F5C /* Home */,
 			);
 			path = Presentation;
@@ -46,6 +49,14 @@
 				B7DFB6C727FE032300F1CD4E /* HomeView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		B718FC4D27FF359F00662F5C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B718FC4E27FF35BC00662F5C /* CustomTextField.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		B7DFB6B927FE032300F1CD4E = {
@@ -155,6 +166,7 @@
 			files = (
 				B7DFB6C827FE032300F1CD4E /* HomeView.swift in Sources */,
 				B7DFB6C627FE032300F1CD4E /* BreweryApp.swift in Sources */,
+				B718FC4F27FF35BC00662F5C /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
