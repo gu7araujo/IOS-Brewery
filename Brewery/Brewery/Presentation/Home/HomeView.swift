@@ -14,12 +14,13 @@ struct HomeView: View {
             RadialGradient(stops: [
                 .init(color: Color(red: 254/255, green: 204/255, blue: 0/255), location: 0.3),
                 .init(color: Color(red: 1, green: 1, blue: 1), location: 0.3)
-            ], center: .top, startRadius: 100, endRadius: 400)
+            ], center: .top, startRadius: 100, endRadius: 500)
                 .ignoresSafeArea()
 
             VStack {
                 Text("Bem vindo,\nEncontre as melhores cervejarias")
                     .font(.headline)
+                    .foregroundColor(.black)
 
                 CustomTextField(text: $searchText, placeholder: "Nome da cidade", systemImageName: "magnifyingglass")
                     .defaultLayoutTextField()
