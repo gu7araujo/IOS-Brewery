@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B7DFB6C627FE032300F1CD4E /* BreweryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DFB6C527FE032300F1CD4E /* BreweryApp.swift */; };
-		B7DFB6C827FE032300F1CD4E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DFB6C727FE032300F1CD4E /* ContentView.swift */; };
+		B7DFB6C827FE032300F1CD4E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DFB6C727FE032300F1CD4E /* HomeView.swift */; };
 		B7DFB6CA27FE032500F1CD4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7DFB6C927FE032500F1CD4E /* Assets.xcassets */; };
 		B7DFB6CD27FE032500F1CD4E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7DFB6CC27FE032500F1CD4E /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		B7DFB6C227FE032300F1CD4E /* Brewery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brewery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7DFB6C527FE032300F1CD4E /* BreweryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryApp.swift; sourceTree = "<group>"; };
-		B7DFB6C727FE032300F1CD4E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B7DFB6C727FE032300F1CD4E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B7DFB6C927FE032500F1CD4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7DFB6CC27FE032500F1CD4E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,7 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				B7DFB6C527FE032300F1CD4E /* BreweryApp.swift */,
-				B7DFB6C727FE032300F1CD4E /* ContentView.swift */,
+				B7DFB6C727FE032300F1CD4E /* HomeView.swift */,
 				B7DFB6C927FE032500F1CD4E /* Assets.xcassets */,
 				B7DFB6CB27FE032500F1CD4E /* Preview Content */,
 			);
@@ -137,7 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7DFB6C827FE032300F1CD4E /* ContentView.swift in Sources */,
+				B7DFB6C827FE032300F1CD4E /* HomeView.swift in Sources */,
 				B7DFB6C627FE032300F1CD4E /* BreweryApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
