@@ -32,6 +32,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B718FC4A27FF34BB00662F5C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				B718FC4B27FF34E000662F5C /* Home */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		B718FC4B27FF34E000662F5C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B7DFB6C727FE032300F1CD4E /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		B7DFB6B927FE032300F1CD4E = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +67,8 @@
 		B7DFB6C427FE032300F1CD4E /* Brewery */ = {
 			isa = PBXGroup;
 			children = (
+				B718FC4A27FF34BB00662F5C /* Presentation */,
 				B7DFB6C527FE032300F1CD4E /* BreweryApp.swift */,
-				B7DFB6C727FE032300F1CD4E /* HomeView.swift */,
 				B7DFB6C927FE032500F1CD4E /* Assets.xcassets */,
 				B7DFB6CB27FE032500F1CD4E /* Preview Content */,
 			);
