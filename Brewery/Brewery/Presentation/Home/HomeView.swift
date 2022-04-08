@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Messages: View {
+private struct Messages: View {
     var title: String
     var message: String
 
@@ -29,8 +29,8 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             RadialGradient(stops: [
-                .init(color: Color(red: 254/255, green: 204/255, blue: 0/255), location: 0.3),
-                .init(color: Color(red: 1, green: 1, blue: 1), location: 0.3)
+                .init(color: Color("Yellow"), location: 0.3),
+                .init(color: Color("WhiteBackground"), location: 0.3)
             ], center: .top, startRadius: 200, endRadius: 300)
                 .ignoresSafeArea()
 
@@ -45,7 +45,61 @@ struct HomeView: View {
 
                 Spacer()
 
-                Messages(title: "Nenhum termo digitado", message: "Por favor, verifique sua pesquisa e tente novamente para obter resultados.")
+                VStack(alignment: .leading){
+                    Text("Segundo a opinião dos usuários:")
+                        .font(.headline)
+                    Text("Exibindo 25 de 100 resultados.")
+                        .font(.footnote)
+
+                    HStack {
+                        Image(systemName: "a.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30)
+                            .foregroundStyle(.brown, Color("Orange"))
+
+
+                        VStack(alignment: .leading) {
+                            Text("Cervejaria A")
+                            Text("Tipo")
+                        }
+
+                        HStack(spacing: 3) {
+                            Text("3,9")
+                            Image(systemName: "star.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.yellow)
+                            Image(systemName: "star.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.yellow)
+                            Image(systemName: "star.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.yellow)
+                            Image(systemName: "star")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.yellow)
+                            Image(systemName: "star")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.yellow)
+                        }
+                    }
+                    .padding(10)
+                    .background(.white)
+                    .cornerRadius(15)
+
+
+                }
+
 
                 Spacer()
             }
