@@ -7,6 +7,23 @@
 
 import SwiftUI
 
+struct Messages: View {
+    var title: String
+    var message: String
+
+    var body: some View {
+        VStack {
+            Text(title)
+                .fontWeight(.semibold)
+                .font(.title)
+                .padding()
+
+            Text(message)
+                .font(.subheadline)
+        }
+    }
+}
+
 struct HomeView: View {
     @State private var searchText = ""
     var body: some View {
@@ -28,15 +45,7 @@ struct HomeView: View {
 
                 Spacer()
 
-                VStack {
-                    Text("Nenhum termo digitado")
-                        .fontWeight(.semibold)
-                        .font(.title)
-                        .padding()
-
-                    Text("Por favor, verifique sua pesquisa e tente novamente para obter resultados.")
-                        .font(.subheadline)
-                }
+                Messages(title: "Nenhum termo digitado", message: "Por favor, verifique sua pesquisa e tente novamente para obter resultados.")
 
                 Spacer()
             }
