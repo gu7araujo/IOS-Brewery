@@ -45,53 +45,62 @@ struct HomeView: View {
 
                 Spacer()
 
-                VStack(alignment: .leading){
+                VStack(alignment: .leading) {
                     Text("Segundo a opinião dos usuários:")
                         .font(.headline)
                     Text("Exibindo 25 de 100 resultados.")
                         .font(.footnote)
 
-                    HStack {
+                    HStack(spacing: 0) {
+                        Spacer()
+
                         Image(systemName: "a.circle.fill")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 40, height: 40)
                             .foregroundStyle(.brown, Color("Orange"))
 
+                        Spacer()
 
                         VStack(alignment: .leading) {
                             Text("Cervejaria A")
+                                .font(.headline)
                             Text("Tipo")
                         }
 
-                        HStack(spacing: 3) {
+                        Spacer()
+
+                        HStack(alignment: .center, spacing: 3) {
                             Text("3,9")
+                                .font(.caption)
                             Image(systemName: "star.fill")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 20, height: 20)
+                                .frame(width: 15, height: 15)
                                 .foregroundColor(.yellow)
                             Image(systemName: "star.fill")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 20, height: 20)
+                                .frame(width: 15, height: 15)
                                 .foregroundColor(.yellow)
                             Image(systemName: "star.fill")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 20, height: 20)
+                                .frame(width: 15, height: 15)
                                 .foregroundColor(.yellow)
                             Image(systemName: "star")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 20, height: 20)
+                                .frame(width: 15, height: 15)
                                 .foregroundColor(.yellow)
                             Image(systemName: "star")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 20, height: 20)
+                                .frame(width: 15, height: 15)
                                 .foregroundColor(.yellow)
                         }
+
+                        Spacer()
                     }
                     .padding(10)
                     .background(.white)
@@ -99,7 +108,6 @@ struct HomeView: View {
 
 
                 }
-
 
                 Spacer()
             }
