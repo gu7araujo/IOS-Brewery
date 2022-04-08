@@ -33,7 +33,6 @@ struct DefaultCustomTextFieldLayout: ViewModifier {
             .padding(10)
             .background(.white)
             .cornerRadius(5)
-            .padding(.horizontal)
     }
 }
 
