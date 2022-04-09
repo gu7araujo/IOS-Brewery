@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Domain
 
 private struct Messages: View {
     var title: String
@@ -144,26 +145,6 @@ struct ContentView_Previews: PreviewProvider {
 
 enum RequestType: String {
     case getRequest = "GET"
-}
-
-struct Brewery: Decodable {
-    let id, name, breweryType: String
-    let street: String?
-    let city, state, postalCode, country: String
-    let longitude, latitude, phone: String?
-    let websiteURL: String?
-    let updatedAt, createdAt: String
-
-    enum CodingKeys: String, CodingKey {
-        case id, name
-        case breweryType = "brewery_type"
-        case street, city, state
-        case postalCode = "postal_code"
-        case country, longitude, latitude, phone
-        case websiteURL = "website_url"
-        case updatedAt = "updated_at"
-        case createdAt = "created_at"
-    }
 }
 
 class ApiManager {
