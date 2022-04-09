@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Domain
+import Infrastructure
 
 public class BreweryUseCase {
 
@@ -16,7 +16,16 @@ public class BreweryUseCase {
 
     // MARK: - Public methods
 
-    public func execute() {
-        
+    public func execute() async {
+        guard let result = await HTTPNetworkClient.shared.sendRequest(parameters: [:]) else {
+            return
+        }
+
+        switch result {
+        case .success(let data):
+            print(data)
+        case .failure(let error):
+            print(error.localizedDescription)
+        }
     }
 }

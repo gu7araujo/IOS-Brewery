@@ -12,16 +12,16 @@ enum RequestType: String {
     case getRequest = "GET"
 }
 
-public final class ApiManager {
+public final class HTTPNetworkClient {
     private let baseURL = "https://api.openbrewerydb.org/breweries"
 
-    static var shared = ApiManager()
+    public static var shared = HTTPNetworkClient()
 
     private var request: URLRequest?
 
-    private init () {}
+    public init () {}
 
-    func sendRequest(parameters: [String: Any]) async -> Result<[Brewery], Error>? {
+    public func sendRequest(parameters: [String: Any]) async -> Result<[Brewery], Error>? {
         do {
             guard let urlRequest = createGetRequestWithURLComponents(parameters: parameters) else {
                 return nil

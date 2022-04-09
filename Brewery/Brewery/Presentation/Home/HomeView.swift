@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Application
 
 private struct Messages: View {
     var title: String
@@ -115,25 +116,13 @@ struct HomeView: View {
             .padding()
         }
         .onAppear {
+            let useCase = BreweryUseCase()
+
             Task {
-                await sendApiCall()
+                await useCase.execute()
             }
         }
     }
-
-    func sendApiCall() async {
-        guard let result = await ApiManager.shared.sendRequest(parameters: [:]) else {
-            return
-        }
-
-        switch result {
-        case .success(let data):
-            print(data)
-        case .failure(let error):
-            print(error.localizedDescription)
-        }
-    }
-
 }
 
 struct ContentView_Previews: PreviewProvider {
