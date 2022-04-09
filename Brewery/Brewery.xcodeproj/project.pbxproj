@@ -87,7 +87,7 @@
 		B718FC4E27FF35BC00662F5C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		B75E5A052801B94300944BFF /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75E5A0D2801BE2100944BFF /* Brewery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brewery.swift; sourceTree = "<group>"; };
-		B75E5A152801BEF800944BFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B75E5A152801BEF800944BFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7D055332801CA15002E5228 /* Application.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Application.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D0553F2801CA90002E5228 /* BreweryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryUseCase.swift; sourceTree = "<group>"; };
 		B7D055462801D6FE002E5228 /* Infrastructure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Infrastructure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,15 +134,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B718FC4A27FF34BB00662F5C /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				B718FC4D27FF359F00662F5C /* Components */,
-				B718FC4B27FF34E000662F5C /* Home */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
 		B718FC4B27FF34E000662F5C /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,10 +205,20 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		B7D0555E2801E51E002E5228 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				B75E5A152801BEF800944BFF /* Info.plist */,
+				B7DFB6C927FE032500F1CD4E /* Assets.xcassets */,
+				B7DFB6CB27FE032500F1CD4E /* Preview Content */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		B7DFB6B927FE032300F1CD4E = {
 			isa = PBXGroup;
 			children = (
-				B7DFB6C427FE032300F1CD4E /* Brewery */,
+				B7DFB6C427FE032300F1CD4E /* Presentation */,
 				B75E5A062801B94300944BFF /* Domain */,
 				B7D055342801CA15002E5228 /* Application */,
 				B7D055472801D6FE002E5228 /* Infrastructure */,
@@ -237,16 +238,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B7DFB6C427FE032300F1CD4E /* Brewery */ = {
+		B7DFB6C427FE032300F1CD4E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				B75E5A152801BEF800944BFF /* Info.plist */,
-				B718FC4A27FF34BB00662F5C /* Presentation */,
+				B718FC4B27FF34E000662F5C /* Home */,
+				B718FC4D27FF359F00662F5C /* Components */,
+				B7D0555E2801E51E002E5228 /* Resource */,
 				B7DFB6C527FE032300F1CD4E /* BreweryApp.swift */,
-				B7DFB6C927FE032500F1CD4E /* Assets.xcassets */,
-				B7DFB6CB27FE032500F1CD4E /* Preview Content */,
 			);
-			path = Brewery;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		B7DFB6CB27FE032500F1CD4E /* Preview Content */ = {
@@ -525,6 +525,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -560,6 +561,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -590,10 +592,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gusta.Application;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -622,9 +625,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gusta.Application;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -653,10 +657,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gusta.Infrastructure;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -685,9 +690,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gusta.Infrastructure;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -817,11 +823,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Brewery/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = RHBH6Q62PG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Brewery/Info.plist;
+				INFOPLIST_FILE = Presentation/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -836,7 +842,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -848,11 +854,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Brewery/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = RHBH6Q62PG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Brewery/Info.plist;
+				INFOPLIST_FILE = Presentation/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -867,7 +873,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
