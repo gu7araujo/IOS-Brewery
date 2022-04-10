@@ -7,8 +7,15 @@
 
 import Foundation
 import Infrastructure
+import Domain
+
+public enum ProjectError: Error {
+    case handleResponseError
+}
 
 public class BreweryUseCase {
+
+    public static var shared = BreweryUseCase()
 
     // MARK: - Initialization
 
@@ -16,16 +23,16 @@ public class BreweryUseCase {
 
     // MARK: - Public methods
 
-    public func execute(name: String) async {
+    public func execute(name: String) async -> Result<[Brewery], Error>? {
         guard let result = await HTTPNetworkClient.shared.sendRequest(parameters: ["query": name]) else {
-            return
+            return .failure(ProjectError.handleResponseError)
         }
 
         switch result {
         case .success(let data):
-            print(data)
+            return .success(data)
         case .failure(let error):
-            print(error.localizedDescription)
+            return .failure(error)
         }
     }
 }
