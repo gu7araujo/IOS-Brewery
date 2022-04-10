@@ -119,7 +119,7 @@ struct HomeView: View {
             let useCase = BreweryUseCase()
 
             Task {
-                await useCase.execute()
+                await useCase.execute(name: "Cerveja")
             }
         }
     }

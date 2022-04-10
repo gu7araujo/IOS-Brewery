@@ -16,8 +16,8 @@ public class BreweryUseCase {
 
     // MARK: - Public methods
 
-    public func execute() async {
-        guard let result = await HTTPNetworkClient.shared.sendRequest(parameters: [:]) else {
+    public func execute(name: String) async {
+        guard let result = await HTTPNetworkClient.shared.sendRequest(parameters: ["query": name]) else {
             return
         }
 
@@ -27,13 +27,5 @@ public class BreweryUseCase {
         case .failure(let error):
             print(error.localizedDescription)
         }
-    }
-
-    public func searchSpecificBreweries() async {
-        // more code here
-    }
-
-    public func searchBreweryDetails() async {
-        // more code here
     }
 }

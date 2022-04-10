@@ -13,7 +13,7 @@ enum RequestType: String {
 }
 
 public final class HTTPNetworkClient {
-    private let baseURL = "https://api.openbrewerydb.org/breweries"
+    private let baseURL = "https://api.openbrewerydb.org/breweries/search"
 
     public static var shared = HTTPNetworkClient()
 
