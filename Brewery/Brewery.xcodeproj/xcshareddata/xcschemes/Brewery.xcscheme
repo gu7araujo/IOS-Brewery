@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B7DFB6C127FE032300F1CD4E"
-               BuildableName = "Presentation.app"
+               BuildableName = "Brewery.app"
                BlueprintName = "Brewery"
                ReferencedContainer = "container:Brewery.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B7DFB6C127FE032300F1CD4E"
-            BuildableName = "Presentation.app"
+            BuildableName = "Brewery.app"
             BlueprintName = "Brewery"
             ReferencedContainer = "container:Brewery.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B7DFB6C127FE032300F1CD4E"
-            BuildableName = "Presentation.app"
+            BuildableName = "Brewery.app"
             BlueprintName = "Brewery"
             ReferencedContainer = "container:Brewery.xcodeproj">
          </BuildableReference>
