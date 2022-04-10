@@ -47,7 +47,10 @@ struct HomeView: View {
 
                 Spacer()
 
-                VStack(alignment: .leading) {
+                if searchText.isEmpty {
+                    Messages(title: "Nenhum termo digitado", message: "Por favor, verifique sua pesquisa e tente novamente para obter resultados")
+                } else {
+                    VStack(alignment: .leading) {
                     Text("Segundo a opinião dos usuários:")
                         .font(.headline)
                     Text("Exibindo 25 de 100 resultados.")
@@ -110,17 +113,11 @@ struct HomeView: View {
 
 
                 }
-
+                }
+                
                 Spacer()
             }
             .padding()
-        }
-        .onAppear {
-            let useCase = BreweryUseCase()
-
-            Task {
-                await useCase.execute(name: "Cerveja")
-            }
         }
     }
 }
