@@ -28,4 +28,12 @@ public class BreweryUseCase {
             print(error.localizedDescription)
         }
     }
+
+    public func searchSpecificBreweries() async {
+        // more code here
+    }
+
+    public func searchBreweryDetails() async {
+        // more code here
+    }
 }
