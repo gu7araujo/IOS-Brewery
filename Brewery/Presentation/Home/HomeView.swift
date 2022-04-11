@@ -76,7 +76,6 @@ private struct HomeSearchResults: View {
                     .cornerRadius(15)
                 }
             }
-
         }
     }
 }
@@ -119,9 +118,10 @@ struct HomeView: View {
 
                 Spacer()
 
-                if !viewModel.searchResult.isEmpty {
+                if viewModel.showingResult {
                     HomeSearchResults(result: viewModel.searchResult)
                         .padding(.top, 90)
+                        .transition(.opacity)
                 } else {
                     Messages(title: viewModel.messageTitle, message: viewModel.messageBody)
                 }

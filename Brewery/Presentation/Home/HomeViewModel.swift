@@ -8,11 +8,13 @@
 import Application
 import Domain
 import Foundation
+import SwiftUI
 
 extension HomeView {
     @MainActor class HomeViewModel: ObservableObject {
         @Published var searchText = ""
         @Published var searchResult = [Brewery]()
+        @Published var showingResult = false
 
         @Published var messageTitle = ""
         @Published var messageBody = ""
@@ -30,6 +32,7 @@ extension HomeView {
                 switch response {
                 case .success(let breweries):
                     searchResult = breweries
+                    showingResult(true)
                 case .failure(let error):
                     handleError(error)
                 }
@@ -39,16 +42,25 @@ extension HomeView {
 
         func searchEmpty() {
             searchResult = []
+            showingResult(false)
             messageTitle = "Nenhum termo digitado"
             messageBody = "Por favor, verifique sua pesquisa e tente novamente para obter resultados"
         }
 
         private func handleError(_ error: Error) {
+            searchResult = []
+            showingResult(false)
             messageTitle = "Ops.."
             if let error = error as? ProjectError {
                 messageBody = error.errorDescription ?? error.localizedDescription
             } else {
                 messageBody = error.localizedDescription
+            }
+        }
+
+        private func showingResult(_ value: Bool) {
+            withAnimation {
+                showingResult = value
             }
         }
 
