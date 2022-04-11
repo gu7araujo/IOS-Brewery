@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Domain
 
 enum RequestType: String {
     case getRequest = "GET"
@@ -21,17 +20,15 @@ public final class HTTPNetworkClient {
 
     public init () {}
 
-    public func sendRequest(parameters: [String: Any]) async -> Result<[Brewery], Error>? {
+    public func sendRequest(parameters: [String: Any]) async -> Result<Data, Error> {
         do {
             guard let urlRequest = createGetRequestWithURLComponents(parameters: parameters) else {
-                return nil
+                return .failure(NetworkError.badRequest)
             }
 
             let (data, _) = try await URLSession.shared.data(for: urlRequest)
 
-            let parsedData = try JSONDecoder().decode([Brewery].self, from: data)
-
-            return .success(parsedData)
+            return .success(data)
         } catch {
             return .failure(error)
         }

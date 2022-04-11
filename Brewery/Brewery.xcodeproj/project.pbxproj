@@ -10,6 +10,8 @@
 		B718FC4F27FF35BC00662F5C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B718FC4E27FF35BC00662F5C /* CustomTextField.swift */; };
 		B75E5A0E2801BE2100944BFF /* Brewery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75E5A0D2801BE2100944BFF /* Brewery.swift */; };
 		B7B864DE2803A8E300D23557 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B864DD2803A8E300D23557 /* HomeViewModel.swift */; };
+		B7B864E32803B52E00D23557 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B864E22803B52E00D23557 /* NetworkError.swift */; };
+		B7B864E62803BBBA00D23557 /* ProjectError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B864E52803BBBA00D23557 /* ProjectError.swift */; };
 		B7D055392801CA15002E5228 /* Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D055332801CA15002E5228 /* Application.framework */; };
 		B7D0553A2801CA15002E5228 /* Application.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7D055332801CA15002E5228 /* Application.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B7D055402801CA90002E5228 /* BreweryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D0553F2801CA90002E5228 /* BreweryUseCase.swift */; };
@@ -90,6 +92,8 @@
 		B75E5A0D2801BE2100944BFF /* Brewery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brewery.swift; sourceTree = "<group>"; };
 		B75E5A152801BEF800944BFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7B864DD2803A8E300D23557 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		B7B864E22803B52E00D23557 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		B7B864E52803BBBA00D23557 /* ProjectError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectError.swift; sourceTree = "<group>"; };
 		B7D055332801CA15002E5228 /* Application.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Application.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D0553F2801CA90002E5228 /* BreweryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryUseCase.swift; sourceTree = "<group>"; };
 		B7D055462801D6FE002E5228 /* Infrastructure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Infrastructure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,9 +180,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B7B864E42803BBA800D23557 /* Erros */ = {
+			isa = PBXGroup;
+			children = (
+				B7B864E52803BBBA00D23557 /* ProjectError.swift */,
+			);
+			path = Erros;
+			sourceTree = "<group>";
+		};
 		B7D055342801CA15002E5228 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				B7B864E42803BBA800D23557 /* Erros */,
 				B7D0553E2801CA65002E5228 /* Brewery */,
 			);
 			path = Application;
@@ -203,6 +216,7 @@
 		B7D055512801D70D002E5228 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B7B864E22803B52E00D23557 /* NetworkError.swift */,
 				B7D055522801D71C002E5228 /* NetworkService.swift */,
 			);
 			path = Network;
@@ -459,6 +473,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7D055402801CA90002E5228 /* BreweryUseCase.swift in Sources */,
+				B7B864E62803BBBA00D23557 /* ProjectError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7D055532801D71C002E5228 /* NetworkService.swift in Sources */,
+				B7B864E32803B52E00D23557 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

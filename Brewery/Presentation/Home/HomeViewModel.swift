@@ -25,18 +25,13 @@ extension HomeView {
             }
 
             Task {
-                guard let response = await BreweryUseCase.shared.execute(name: searchText) else {
-                    messageTitle = "Erro"
-                    messageBody = "Não foi possível buscar informações."
-                    return
-                }
+                let response = await BreweryUseCase.shared.execute(name: searchText)
 
                 switch response {
                 case .success(let breweries):
                     searchResult = breweries
                 case .failure(let error):
-                    messageTitle = "Erro"
-                    messageBody = error.localizedDescription
+                    handleError(error)
                 }
             }
         }
@@ -46,6 +41,15 @@ extension HomeView {
             searchResult = []
             messageTitle = "Nenhum termo digitado"
             messageBody = "Por favor, verifique sua pesquisa e tente novamente para obter resultados"
+        }
+
+        private func handleError(_ error: Error) {
+            messageTitle = "Ops.."
+            if let error = error as? ProjectError {
+                messageBody = error.errorDescription ?? error.localizedDescription
+            } else {
+                messageBody = error.localizedDescription
+            }
         }
 
     }

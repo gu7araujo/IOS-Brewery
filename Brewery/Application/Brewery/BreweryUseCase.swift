@@ -9,10 +9,6 @@ import Foundation
 import Infrastructure
 import Domain
 
-public enum ProjectError: Error {
-    case handleResponseError
-}
-
 public class BreweryUseCase {
 
     public static var shared = BreweryUseCase()
@@ -23,15 +19,23 @@ public class BreweryUseCase {
 
     // MARK: - Public methods
 
-    public func execute(name: String) async -> Result<[Brewery], Error>? {
-        guard let result = await HTTPNetworkClient.shared.sendRequest(parameters: ["query": name]) else {
-            return .failure(ProjectError.handleResponseError)
-        }
+    public func execute(name: String) async -> Result<[Brewery], Error> {
+        let result = await HTTPNetworkClient.shared.sendRequest(parameters: ["query": name])
 
         switch result {
         case .success(let data):
-            return .success(data)
+            do {
+                let parsedData = try JSONDecoder().decode([Brewery].self, from: data)
+
+                return .success(parsedData)
+            } catch {
+                return .failure(ProjectError.handleResponseError)
+            }
         case .failure(let error):
+            if error as? NetworkError == NetworkError.badRequest {
+                return .failure(ProjectError.handleResponseError)
+            }
+            
             return .failure(error)
         }
     }
