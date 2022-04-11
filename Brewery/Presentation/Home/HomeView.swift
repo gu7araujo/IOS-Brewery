@@ -18,61 +18,64 @@ private struct HomeSearchResults: View {
             Text("Exibindo 25 de 100 resultados.")
                 .font(.footnote)
 
-            HStack(spacing: 0) {
-                Spacer()
+            ScrollView(.vertical, showsIndicators: false) {
+                ForEach(0..<10) { _ in
+                    HStack(spacing: 0) {
+                        Spacer()
 
-                Image(systemName: "a.circle.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 40, height: 40)
-                    .foregroundStyle(.brown, Color("Orange"))
+                        Image(systemName: "a.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40, height: 40)
+                            .foregroundStyle(.brown, Color("Orange"))
 
-                Spacer()
+                        Spacer()
 
-                VStack(alignment: .leading) {
-                    Text("Cervejaria A")
-                        .font(.headline)
-                    Text("Tipo")
+                        VStack(alignment: .leading) {
+                            Text("Cervejaria A")
+                                .font(.headline)
+                            Text("Tipo")
+                        }
+
+                        Spacer()
+
+                        HStack(alignment: .center, spacing: 3) {
+                            Text("3,9")
+                                .font(.caption)
+                            Image(systemName: "star.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 15, height: 15)
+                                .foregroundColor(.yellow)
+                            Image(systemName: "star.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 15, height: 15)
+                                .foregroundColor(.yellow)
+                            Image(systemName: "star.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 15, height: 15)
+                                .foregroundColor(.yellow)
+                            Image(systemName: "star")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 15, height: 15)
+                                .foregroundColor(.yellow)
+                            Image(systemName: "star")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 15, height: 15)
+                                .foregroundColor(.yellow)
+                        }
+
+                        Spacer()
+                    }
+                    .padding(10)
+                    .background(.white)
+                    .cornerRadius(15)
                 }
-
-                Spacer()
-
-                HStack(alignment: .center, spacing: 3) {
-                    Text("3,9")
-                        .font(.caption)
-                    Image(systemName: "star.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 15, height: 15)
-                        .foregroundColor(.yellow)
-                    Image(systemName: "star.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 15, height: 15)
-                        .foregroundColor(.yellow)
-                    Image(systemName: "star.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 15, height: 15)
-                        .foregroundColor(.yellow)
-                    Image(systemName: "star")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 15, height: 15)
-                        .foregroundColor(.yellow)
-                    Image(systemName: "star")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 15, height: 15)
-                        .foregroundColor(.yellow)
-                }
-
-                Spacer()
             }
-            .padding(10)
-            .background(.white)
-            .cornerRadius(15)
-
 
         }
     }
@@ -87,7 +90,6 @@ private struct Messages: View {
             Text(title)
                 .fontWeight(.semibold)
                 .font(.title)
-                .padding()
 
             Text(message)
                 .font(.subheadline)
@@ -113,19 +115,20 @@ struct HomeView: View {
 
                     CustomTextField(text: $viewModel.searchText, placeholder: "Buscar local", systemImageName: "magnifyingglass")
                         .defaultLayoutTextField()
-                }
+                }.padding(.top, 30)
 
                 Spacer()
 
                 if !viewModel.searchResult.isEmpty {
                     HomeSearchResults(result: viewModel.searchResult)
+                        .padding(.top, 90)
                 } else {
                     Messages(title: viewModel.messageTitle, message: viewModel.messageBody)
                 }
 
                 Spacer()
             }
-            .padding()
+            .padding(.horizontal, 20)
         }
         .onAppear {
             viewModel.searchEmpty()
