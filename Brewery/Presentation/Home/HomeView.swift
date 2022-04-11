@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Domain
-import Application
 
 private struct HomeSearchResults: View {
     var result: [Brewery]
@@ -97,11 +96,7 @@ private struct Messages: View {
 }
 
 struct HomeView: View {
-    @State private var searchText = ""
-    @State private var searchResult = [Brewery]()
-
-    @State private var messageTitle = ""
-    @State private var messageBody = ""
+    @StateObject private var viewModel = HomeViewModel()
 
     var body: some View {
         ZStack {
@@ -116,51 +111,28 @@ struct HomeView: View {
                     Text("Bem vindo,\nEncontre as melhores cervejarias")
                         .font(.headline)
 
-                    CustomTextField(text: $searchText, placeholder: "Buscar local", systemImageName: "magnifyingglass")
+                    CustomTextField(text: $viewModel.searchText, placeholder: "Buscar local", systemImageName: "magnifyingglass")
                         .defaultLayoutTextField()
                 }
 
                 Spacer()
 
-                if !searchResult.isEmpty {
-                    HomeSearchResults(result: searchResult)
+                if !viewModel.searchResult.isEmpty {
+                    HomeSearchResults(result: viewModel.searchResult)
                 } else {
-                    Messages(title: messageTitle, message: messageBody)
+                    Messages(title: viewModel.messageTitle, message: viewModel.messageBody)
                 }
 
                 Spacer()
             }
             .padding()
         }
-        .onAppear(perform: searchEmpty)
-        .onSubmit {
-            guard !searchText.isEmpty else {
-                searchEmpty()
-                return
-            }
-
-            Task {
-                guard let response = await BreweryUseCase.shared.execute(name: searchText) else {
-                    messageTitle = "Erro"
-                    messageBody = "Não foi possível buscar informações."
-                    return
-                }
-
-                switch response {
-                case .success(let breweries):
-                    searchResult = breweries
-                case .failure(let error):
-                    messageTitle = "Erro"
-                    messageBody = error.localizedDescription
-                }
-            }
+        .onAppear {
+            viewModel.searchEmpty()
         }
-    }
-
-    func searchEmpty() {
-        searchResult = []
-        messageTitle = "Nenhum termo digitado"
-        messageBody = "Por favor, verifique sua pesquisa e tente novamente para obter resultados"
+        .onSubmit {
+            viewModel.onSubmit()
+        }
     }
 }
 
