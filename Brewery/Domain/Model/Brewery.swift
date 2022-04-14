@@ -8,12 +8,12 @@
 import Foundation
 
 public struct Brewery: Decodable {
-    let id, name, breweryType: String
-    let street: String?
-    let city, state, postalCode, country: String
-    let longitude, latitude, phone: String?
-    let websiteURL: String?
-    let updatedAt, createdAt: String
+    public let id, name, breweryType: String
+    public let street: String?
+    public let city, state, postalCode, country: String
+    public let longitude, latitude, phone: String?
+    public let websiteURL: String?
+    public let updatedAt, createdAt: String
 
     enum CodingKeys: String, CodingKey {
         case id, name

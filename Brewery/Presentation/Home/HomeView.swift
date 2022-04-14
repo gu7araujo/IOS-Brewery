@@ -9,21 +9,21 @@ import SwiftUI
 import Domain
 
 private struct HomeSearchResults: View {
-    var result: [Brewery]
+    var results: [Brewery]
 
     var body: some View {
         VStack(alignment: .leading) {
             Text("Segundo a opinião dos usuários:")
                 .font(.headline)
-            Text("Exibindo 25 de 100 resultados.")
+            Text("Exibindo \(results.count) resultados.")
                 .font(.footnote)
 
             ScrollView(.vertical, showsIndicators: false) {
-                ForEach(0..<10) { _ in
+                ForEach(results, id: \.id) { result in
                     HStack(spacing: 0) {
                         Spacer()
 
-                        Image(systemName: "a.circle.fill")
+                        Image(systemName: "\(getFirstLetter(result.name)).circle.fill")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 40, height: 40)
@@ -32,9 +32,9 @@ private struct HomeSearchResults: View {
                         Spacer()
 
                         VStack(alignment: .leading) {
-                            Text("Cervejaria A")
+                            Text(result.name)
                                 .font(.headline)
-                            Text("Tipo")
+                            Text("Tipo \(result.breweryType)")
                         }
 
                         Spacer()
@@ -71,12 +71,20 @@ private struct HomeSearchResults: View {
 
                         Spacer()
                     }
+                    .onTapGesture {
+                        print(result.name)
+                    }
                     .padding(10)
                     .background(.white)
                     .cornerRadius(15)
                 }
             }
         }
+    }
+
+    private func getFirstLetter(_ word: String) -> String {
+        let letters = Array(word)
+        return String(letters[0]).lowercased()
     }
 }
 
@@ -119,7 +127,7 @@ struct HomeView: View {
                 Spacer()
 
                 if viewModel.showingResult {
-                    HomeSearchResults(result: viewModel.searchResult)
+                    HomeSearchResults(results: viewModel.searchResult)
                         .padding(.top, 90)
                         .transition(.opacity)
                 } else {
