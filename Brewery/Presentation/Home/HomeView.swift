@@ -18,65 +18,67 @@ private struct HomeSearchResults: View {
             Text("Exibindo \(results.count) resultados.")
                 .font(.footnote)
 
-            ScrollView(.vertical, showsIndicators: false) {
-                ForEach(results, id: \.id) { result in
-                    HStack(spacing: 0) {
-                        Spacer()
+            ScrollView {
+                LazyVStack {
+                    ForEach(results, id: \.id) { result in
+                        HStack(spacing: 0) {
+                            Spacer()
 
-                        Image(systemName: "\(getFirstLetter(result.name)).circle.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40, height: 40)
-                            .foregroundStyle(.brown, Color("Orange"))
+                            Image(systemName: "\(getFirstLetter(result.name)).circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40, height: 40)
+                                .foregroundStyle(.brown, Color("Orange"))
 
-                        Spacer()
+                            Spacer()
 
-                        VStack(alignment: .leading) {
-                            Text(result.name)
-                                .font(.headline)
-                            Text("Tipo \(result.breweryType)")
+                            VStack(alignment: .leading) {
+                                Text(result.name)
+                                    .font(.headline)
+                                Text("Tipo \(result.breweryType)")
+                            }
+
+                            Spacer()
+
+                            HStack(alignment: .center, spacing: 3) {
+                                Text("3,9")
+                                    .font(.caption)
+                                Image(systemName: "star.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundColor(.yellow)
+                                Image(systemName: "star.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundColor(.yellow)
+                                Image(systemName: "star.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundColor(.yellow)
+                                Image(systemName: "star")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundColor(.yellow)
+                                Image(systemName: "star")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundColor(.yellow)
+                            }
+
+                            Spacer()
                         }
-
-                        Spacer()
-
-                        HStack(alignment: .center, spacing: 3) {
-                            Text("3,9")
-                                .font(.caption)
-                            Image(systemName: "star.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 15, height: 15)
-                                .foregroundColor(.yellow)
-                            Image(systemName: "star.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 15, height: 15)
-                                .foregroundColor(.yellow)
-                            Image(systemName: "star.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 15, height: 15)
-                                .foregroundColor(.yellow)
-                            Image(systemName: "star")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 15, height: 15)
-                                .foregroundColor(.yellow)
-                            Image(systemName: "star")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 15, height: 15)
-                                .foregroundColor(.yellow)
+                        .onTapGesture {
+                            print(result.name)
                         }
-
-                        Spacer()
+                        .padding(10)
+                        .background(.white)
+                        .cornerRadius(15)
                     }
-                    .onTapGesture {
-                        print(result.name)
-                    }
-                    .padding(10)
-                    .background(.white)
-                    .cornerRadius(15)
                 }
             }
         }
