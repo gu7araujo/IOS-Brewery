@@ -21,24 +21,18 @@ private struct HomeSearchResults: View {
             ScrollView {
                 LazyVStack {
                     ForEach(results, id: \.id) { result in
-                        HStack(spacing: 0) {
-                            Spacer()
-
+                        HStack {
                             Image(systemName: "\(getFirstLetter(result.name)).circle.fill")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 40, height: 40)
+                                .frame(width: 40.0, height: 40.0)
                                 .foregroundStyle(.brown, Color("Orange"))
-
-                            Spacer()
 
                             VStack(alignment: .leading) {
                                 Text(result.name)
                                     .font(.headline)
                                 Text("Tipo \(result.breweryType)")
                             }
-
-                            Spacer()
 
                             HStack(alignment: .center, spacing: 3) {
                                 Text("3,9")
@@ -69,12 +63,8 @@ private struct HomeSearchResults: View {
                                     .frame(width: 15, height: 15)
                                     .foregroundColor(.yellow)
                             }
+                        }
 
-                            Spacer()
-                        }
-                        .onTapGesture {
-                            print(result.name)
-                        }
                         .padding(10)
                         .background(.white)
                         .cornerRadius(15)
@@ -110,35 +100,39 @@ struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
 
     var body: some View {
-        ZStack {
-            RadialGradient(stops: [
-                .init(color: Color("Yellow"), location: 0.3),
-                .init(color: Color("WhiteBackground"), location: 0.3)
-            ], center: .top, startRadius: 200, endRadius: 300)
-                .ignoresSafeArea()
+        GeometryReader { geometry in
+            ZStack {
+                RadialGradient(stops: [
+                    .init(color: Color("Yellow"), location: 0.3),
+                    .init(color: Color("WhiteBackground"), location: 0.3)
+                ], center: .top, startRadius: geometry.size.height * 0.1, endRadius: geometry.size.height * 1)
+                    .ignoresSafeArea()
 
-            VStack {
-                VStack(alignment: .leading) {
-                    Text("Bem vindo,\nEncontre as melhores cervejarias")
-                        .font(.headline)
 
-                    CustomTextField(text: $viewModel.searchText, placeholder: "Buscar local", systemImageName: "magnifyingglass")
-                        .defaultLayoutTextField()
-                }.padding(.top, 30)
+                VStack {
+                    VStack(alignment: .leading) {
+                        Text("Bem vindo,\nEncontre as melhores cervejarias")
+                            .font(.headline)
 
-                Spacer()
+                        CustomTextField(text: $viewModel.searchText, placeholder: "Buscar local", systemImageName: "magnifyingglass")
+                            .defaultLayoutTextField()
+                    }
+                    .frame(height: geometry.size.height * 0.3)
 
-                if viewModel.showingResult {
-                    HomeSearchResults(results: viewModel.searchResult)
-                        .padding(.top, 90)
-                        .transition(.opacity)
-                } else {
-                    Messages(title: viewModel.messageTitle, message: viewModel.messageBody)
+                    Spacer()
+
+                    if viewModel.showingResult {
+                        HomeSearchResults(results: viewModel.searchResult)
+                            .padding(.top, 20)
+                            .transition(.opacity)
+                    } else {
+                        Messages(title: viewModel.messageTitle, message: viewModel.messageBody)
+                    }
+
+                    Spacer()
                 }
-
-                Spacer()
+                .padding(.horizontal)
             }
-            .padding(.horizontal, 20)
         }
         .onAppear {
             viewModel.searchEmpty()
