@@ -19,7 +19,6 @@ extension HomeView {
         @Published var messageTitle = ""
         @Published var messageBody = ""
 
-
         func onSubmit() {
             guard !searchText.isEmpty else {
                 searchEmpty()
@@ -38,7 +37,6 @@ extension HomeView {
                 }
             }
         }
-
 
         func searchEmpty() {
             searchResult = []

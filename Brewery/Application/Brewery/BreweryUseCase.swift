@@ -35,7 +35,6 @@ public class BreweryUseCase {
             if error as? NetworkError == NetworkError.badRequest {
                 return .failure(ProjectError.handleResponseError)
             }
-            
             return .failure(error)
         }
     }

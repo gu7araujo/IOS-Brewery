@@ -108,7 +108,6 @@ struct HomeView: View {
                 ], center: .top, startRadius: geometry.size.height * 0.1, endRadius: geometry.size.height * 1)
                     .ignoresSafeArea()
 
-
                 VStack {
                     VStack(alignment: .leading) {
                         Text("Bem vindo,\nEncontre as melhores cervejarias")
