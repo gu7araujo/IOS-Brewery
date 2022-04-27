@@ -9,18 +9,25 @@ import Foundation
 import Infrastructure
 import Domain
 
-public class BreweryUseCase {
+public protocol BreweryUseCaseProtocol {
+    func execute(name: String) async -> Result<[Brewery], Error>
+}
 
-    public static var shared = BreweryUseCase()
+public class BreweryUseCase: BreweryUseCaseProtocol {
+
+    public static var shared: BreweryUseCaseProtocol = BreweryUseCase()
+    private let network: Network
 
     // MARK: - Initialization
 
-    public init() { }
+    public init(network: Network = HTTPNetworkClient.shared) {
+        self.network = network
+    }
 
     // MARK: - Public methods
 
     public func execute(name: String) async -> Result<[Brewery], Error> {
-        let result = await HTTPNetworkClient.shared.sendRequest(parameters: ["query": name])
+        let result = await network.sendRequest(parameters: ["query": name])
 
         switch result {
         case .success(let data):

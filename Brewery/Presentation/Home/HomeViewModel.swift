@@ -19,6 +19,12 @@ extension HomeView {
         @Published var messageTitle = ""
         @Published var messageBody = ""
 
+        private let breweryUseCase: BreweryUseCaseProtocol
+
+        init(breweryUseCase: BreweryUseCaseProtocol = BreweryUseCase.shared) {
+            self.breweryUseCase = breweryUseCase
+        }
+
         func onSubmit() {
             guard !searchText.isEmpty else {
                 searchEmpty()
@@ -26,7 +32,7 @@ extension HomeView {
             }
 
             Task {
-                let response = await BreweryUseCase.shared.execute(name: searchText)
+                let response = await breweryUseCase.execute(name: searchText)
 
                 switch response {
                 case .success(let breweries):
