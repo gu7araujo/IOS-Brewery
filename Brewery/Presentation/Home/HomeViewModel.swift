@@ -33,13 +33,7 @@ extension HomeView {
             Task {
                 let response = await breweryUseCase.execute(name: searchText)
 
-                switch response {
-                case .success(let breweries):
-                    searchResult = breweries
-                    showingResult(true)
-                case .failure(let error):
-                    handleError(error)
-                }
+                handleResponse(response)
             }
         }
 
@@ -48,6 +42,20 @@ extension HomeView {
             showingResult(false)
             messageTitle = "Nenhum termo digitado"
             messageBody = "Por favor, verifique sua pesquisa e tente novamente para obter resultados"
+        }
+
+        private func handleResponse(_ response: Result<[Brewery], Error>) {
+            switch response {
+            case .success(let breweries):
+                guard breweries.count > 0 else {
+                    handleError(ProjectError.handleResponseError)
+                    return
+                }
+                searchResult = breweries
+                showingResult(true)
+            case .failure(let error):
+                handleError(error)
+            }
         }
 
         private func handleError(_ error: Error) {
