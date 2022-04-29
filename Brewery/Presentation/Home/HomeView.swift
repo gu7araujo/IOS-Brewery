@@ -8,8 +8,41 @@
 import SwiftUI
 import Domain
 
+private struct CardBrewery: View {
+    var brewery: Brewery
+
+    var body: some View {
+        HStack {
+            Image(systemName: "\(getFirstLetter(brewery.name)).circle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 40.0, height: 40.0)
+                .foregroundStyle(.brown, Color("Orange"))
+
+            VStack(alignment: .leading) {
+                Text(brewery.name)
+                    .font(.headline)
+                Text("Tipo \(brewery.breweryType)")
+            }
+
+            EvaluationScoring()
+        }
+        .padding(10)
+        .background(.white)
+        .cornerRadius(15)
+        .padding(5)
+    }
+
+    private func getFirstLetter(_ word: String) -> String {
+        let letters = Array(word)
+        return String(letters[0]).lowercased()
+    }
+}
+
 private struct HomeSearchResults: View {
     var results: [Brewery]
+
+    @State private var isShowingDetailView = false
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -18,65 +51,21 @@ private struct HomeSearchResults: View {
             Text("Exibindo \(results.count) resultados.")
                 .font(.footnote)
 
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 LazyVStack {
                     ForEach(results, id: \.id) { result in
-                        HStack {
-                            Image(systemName: "\(getFirstLetter(result.name)).circle.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 40.0, height: 40.0)
-                                .foregroundStyle(.brown, Color("Orange"))
-
-                            VStack(alignment: .leading) {
-                                Text(result.name)
-                                    .font(.headline)
-                                Text("Tipo \(result.breweryType)")
-                            }
-
-                            HStack(alignment: .center, spacing: 3) {
-                                Text("3,9")
-                                    .font(.caption)
-                                Image(systemName: "star.fill")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 15, height: 15)
-                                    .foregroundColor(.yellow)
-                                Image(systemName: "star.fill")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 15, height: 15)
-                                    .foregroundColor(.yellow)
-                                Image(systemName: "star.fill")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 15, height: 15)
-                                    .foregroundColor(.yellow)
-                                Image(systemName: "star")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 15, height: 15)
-                                    .foregroundColor(.yellow)
-                                Image(systemName: "star")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 15, height: 15)
-                                    .foregroundColor(.yellow)
-                            }
+                        NavigationLink(destination: DetailsView(), isActive: $isShowingDetailView) {
+                            EmptyView()
                         }
 
-                        .padding(10)
-                        .background(.white)
-                        .cornerRadius(15)
+                        CardBrewery(brewery: result)
+                            .onTapGesture {
+                                isShowingDetailView = true
+                            }
                     }
                 }
             }
         }
-    }
-
-    private func getFirstLetter(_ word: String) -> String {
-        let letters = Array(word)
-        return String(letters[0]).lowercased()
     }
 }
 
@@ -100,44 +89,51 @@ struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
 
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                RadialGradient(stops: [
-                    .init(color: Color("Yellow"), location: 0.3),
-                    .init(color: Color("WhiteBackground"), location: 0.3)
-                ], center: .top, startRadius: geometry.size.height * 0.1, endRadius: geometry.size.height * 1)
-                    .ignoresSafeArea()
+        NavigationView {
+            GeometryReader { geometry in
+                ZStack {
+                    RadialGradient(stops: [
+                        .init(color: Color("Yellow"), location: 0.3),
+                        .init(color: Color("WhiteBackground"), location: 0.3)
+                    ], center: .top, startRadius: geometry.size.height * 0.1, endRadius: geometry.size.height * 1)
+                        .ignoresSafeArea()
 
-                VStack {
-                    VStack(alignment: .leading) {
-                        Text("Bem vindo,\nEncontre as melhores cervejarias")
-                            .font(.headline)
+                    VStack {
+                        VStack(alignment: .leading) {
+                            Text("Bem vindo,\nEncontre as melhores cervejarias")
+                                .font(.headline)
 
-                        CustomTextField(text: $viewModel.searchText, placeholder: "Buscar local", systemImageName: "magnifyingglass")
-                            .defaultLayoutTextField()
+                            CustomTextField(text: $viewModel.searchText, placeholder: "Buscar local", systemImageName: "magnifyingglass")
+                                .defaultLayoutTextField()
+                        }
+                        .frame(height: geometry.size.height * 0.3)
+
+                        Spacer()
+
+                        if viewModel.showingResult {
+                            HomeSearchResults(results: viewModel.searchResult)
+                                .padding(.top, 20)
+                                .transition(.opacity)
+                        } else {
+                            Messages(title: viewModel.messageTitle, message: viewModel.messageBody)
+                        }
+
+                        Spacer()
                     }
-                    .frame(height: geometry.size.height * 0.3)
-
-                    Spacer()
-
-                    if viewModel.showingResult {
-                        HomeSearchResults(results: viewModel.searchResult)
-                            .padding(.top, 20)
-                            .transition(.opacity)
-                    } else {
-                        Messages(title: viewModel.messageTitle, message: viewModel.messageBody)
-                    }
-
-                    Spacer()
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
             }
-        }
-        .onAppear {
-            viewModel.searchEmpty()
-        }
-        .onSubmit {
-            viewModel.onSubmit()
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
+            .onAppear {
+                guard viewModel.searchText.isEmpty else {
+                    return
+                }
+                viewModel.searchEmpty()
+            }
+            .onSubmit {
+                viewModel.onSubmit()
+            }
         }
     }
 }
