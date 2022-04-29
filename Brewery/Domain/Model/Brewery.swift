@@ -5,8 +5,6 @@
 //  Created by Gustavo Araujo Santos on 09/04/22.
 //
 
-import Foundation
-
 public struct Brewery: Decodable {
     public let id, name, breweryType: String
     public let street: String?
