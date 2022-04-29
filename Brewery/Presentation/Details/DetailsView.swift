@@ -51,7 +51,6 @@ struct DetailsView: View {
                         .frame(height: 1)
                         .foregroundColor(.gray)
 
-
                     HStack {
                         Text("Site")
                         Spacer()
@@ -62,7 +61,6 @@ struct DetailsView: View {
                     Rectangle()
                         .frame(height: 1)
                         .foregroundColor(.gray)
-
 
                     HStack {
                         Text("Endereco")
