@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import Domain
 
 struct DetailsView: View {
+    var brewery: Brewery
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -20,7 +23,7 @@ struct DetailsView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Image(systemName: "g.circle.fill")
+                        Image(systemName: "\(brewery.name.getFirstLetter()).circle.fill")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 80.0, height: 80.0)
@@ -29,7 +32,7 @@ struct DetailsView: View {
                         Spacer()
 
                         VStack {
-                            Text("Cervejaria C")
+                            Text(brewery.name)
                                 .font(.headline)
                             EvaluationScoring()
                             Text("+500 avaliacoes")
@@ -43,7 +46,7 @@ struct DetailsView: View {
                     HStack {
                         Text("Tipo")
                         Spacer()
-                        Text("Bar")
+                        Text(brewery.breweryType)
                     }
                     .padding(.bottom, 15)
 
@@ -51,23 +54,27 @@ struct DetailsView: View {
                         .frame(height: 1)
                         .foregroundColor(.gray)
 
-                    HStack {
-                        Text("Site")
-                        Spacer()
-                        Text("www.Bar.com")
-                    }
-                    .padding(.bottom, 15)
+                    if let site = brewery.websiteURL {
+                        HStack {
+                            Text("Site")
+                            Spacer()
+                            Text(site)
+                        }
+                        .padding(.bottom, 15)
 
-                    Rectangle()
-                        .frame(height: 1)
-                        .foregroundColor(.gray)
-
-                    HStack {
-                        Text("Endereco")
-                        Spacer()
-                        Text("618 Farb Ave, San Diego")
+                        Rectangle()
+                            .frame(height: 1)
+                            .foregroundColor(.gray)
                     }
-                    .padding(.bottom, 15)
+
+                    if let street = brewery.street, let city = brewery.city {
+                        HStack {
+                            Text("Endereço")
+                            Spacer()
+                            Text("\(street), \(city)")
+                        }
+                        .padding(.bottom, 15)
+                    }
 
                     Rectangle()
                         .frame(height: 1)
@@ -96,7 +103,10 @@ struct DetailsView: View {
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
+    // swiftlint:disable:next line_length
+    static let brewery = Brewery(id: "1", name: "Cervejaria Teste 1234", breweryType: "Pub", street: "Rua Mario Campos 381", city: "Sao Paulo", state: "MG", postalCode: "35610-000", country: "Brazil", longitude: nil, latitude: nil, phone: "(37) 3551-1513", websiteURL: "www.site.com.br", updatedAt: "2022-05-01", createdAt: "2022-05-01")
+
     static var previews: some View {
-        DetailsView()
+        DetailsView(brewery: brewery)
     }
 }

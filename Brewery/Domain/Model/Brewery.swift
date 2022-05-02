@@ -23,4 +23,34 @@ public struct Brewery: Decodable {
         case updatedAt = "updated_at"
         case createdAt = "created_at"
     }
+
+    public init(id: String,
+                name: String,
+                breweryType: String,
+                street: String?,
+                city: String?,
+                state: String?,
+                postalCode: String?,
+                country: String?,
+                longitude: String?,
+                latitude: String?,
+                phone: String?,
+                websiteURL: String?,
+                updatedAt: String,
+                createdAt: String) {
+        self.id = id
+        self.name = name
+        self.breweryType = breweryType
+        self.street = street
+        self.city = city
+        self.state = state
+        self.postalCode = postalCode
+        self.country = country
+        self.longitude = longitude
+        self.latitude = latitude
+        self.phone = phone
+        self.websiteURL = websiteURL
+        self.updatedAt = updatedAt
+        self.createdAt = createdAt
+    }
 }

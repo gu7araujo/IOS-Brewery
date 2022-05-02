@@ -13,7 +13,7 @@ struct CardBrewery: View {
 
     var body: some View {
         HStack {
-            Image(systemName: "\(getFirstLetter(brewery.name)).circle.fill")
+            Image(systemName: "\(brewery.name.getFirstLetter()).circle.fill")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 40.0, height: 40.0)
@@ -31,10 +31,5 @@ struct CardBrewery: View {
         .background(.white)
         .cornerRadius(15)
         .padding(5)
-    }
-
-    private func getFirstLetter(_ word: String) -> String {
-        let letters = Array(word)
-        return String(letters[0]).lowercased()
     }
 }

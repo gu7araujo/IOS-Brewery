@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B718FC4F27FF35BC00662F5C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B718FC4E27FF35BC00662F5C /* CustomTextField.swift */; };
+		B746597428205E41005F9F96 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746597328205E41005F9F96 /* String.swift */; };
 		B75E5A0E2801BE2100944BFF /* Brewery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75E5A0D2801BE2100944BFF /* Brewery.swift */; };
 		B764D807281C14720026DF21 /* CardBrewery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B764D806281C14720026DF21 /* CardBrewery.swift */; };
 		B7B864DE2803A8E300D23557 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B864DD2803A8E300D23557 /* HomeViewModel.swift */; };
@@ -91,6 +92,7 @@
 
 /* Begin PBXFileReference section */
 		B718FC4E27FF35BC00662F5C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		B746597328205E41005F9F96 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		B75E5A052801B94300944BFF /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75E5A0D2801BE2100944BFF /* Brewery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brewery.swift; sourceTree = "<group>"; };
 		B75E5A152801BEF800944BFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -163,6 +165,14 @@
 				B764D806281C14720026DF21 /* CardBrewery.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		B746597228205E2E005F9F96 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B746597328205E41005F9F96 /* String.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B75E5A062801B94300944BFF /* Domain */ = {
@@ -266,6 +276,7 @@
 		B7DFB6C427FE032300F1CD4E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B746597228205E2E005F9F96 /* Extensions */,
 				B7FD0D21281AB37900160086 /* Details */,
 				B718FC4B27FF34E000662F5C /* Home */,
 				B718FC4D27FF359F00662F5C /* Components */,
@@ -535,6 +546,7 @@
 				B718FC4F27FF35BC00662F5C /* CustomTextField.swift in Sources */,
 				B7B864DE2803A8E300D23557 /* HomeViewModel.swift in Sources */,
 				B764D807281C14720026DF21 /* CardBrewery.swift in Sources */,
+				B746597428205E41005F9F96 /* String.swift in Sources */,
 				B7FD0D23281AB38900160086 /* DetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,7 +23,7 @@ private struct HomeSearchResults: View {
             ScrollView(showsIndicators: false) {
                 LazyVStack {
                     ForEach(results, id: \.id) { result in
-                        NavigationLink(destination: DetailsView(), isActive: $isShowingDetailView) {
+                        NavigationLink(destination: DetailsView(brewery: result), isActive: $isShowingDetailView) {
                             EmptyView()
                         }
 
