@@ -8,7 +8,7 @@
 public struct Brewery: Decodable {
     public let id, name, breweryType: String
     public let street: String?
-    public let city, state, postalCode, country: String
+    public let city, state, postalCode, country: String?
     public let longitude, latitude, phone: String?
     public let websiteURL: String?
     public let updatedAt, createdAt: String
