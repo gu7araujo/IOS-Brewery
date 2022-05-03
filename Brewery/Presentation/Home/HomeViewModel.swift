@@ -5,9 +5,9 @@
 //  Created by Gustavo Araujo Santos on 10/04/22.
 //
 
+import SwiftUI
 import Application
 import Domain
-import SwiftUI
 
 extension HomeView {
     @MainActor class HomeViewModel: ObservableObject {
