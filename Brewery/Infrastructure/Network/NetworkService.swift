@@ -20,8 +20,6 @@ public final class HTTPNetworkClient: Network {
 
     public static var shared: Network = HTTPNetworkClient()
 
-    private var request: URLRequest?
-
     private init() {}
 
     public func sendRequest(parameters: [String: Any]) async -> Result<Data, Error> {
@@ -47,9 +45,9 @@ public final class HTTPNetworkClient: Network {
 
         components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
 
-        request = URLRequest(url: components.url!)
+        var request = URLRequest(url: components.url!)
 
-        request?.httpMethod = RequestType.getRequest.rawValue
+        request.httpMethod = RequestType.getRequest.rawValue
 
         return request
     }
