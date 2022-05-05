@@ -22,7 +22,7 @@ public final class HTTPNetworkClient: Network {
 
     private var request: URLRequest?
 
-    public init() {}
+    private init() {}
 
     public func sendRequest(parameters: [String: Any]) async -> Result<Data, Error> {
         do {
