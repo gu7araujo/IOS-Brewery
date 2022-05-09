@@ -38,22 +38,6 @@ private struct HomeSearchResults: View {
     }
 }
 
-private struct Messages: View {
-    var title: String
-    var message: String
-
-    var body: some View {
-        VStack {
-            Text(title)
-                .fontWeight(.semibold)
-                .font(.title)
-
-            Text(message)
-                .font(.subheadline)
-        }
-    }
-}
-
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
 
@@ -81,7 +65,7 @@ struct HomeView: View {
 
                         if viewModel.showingResult {
                             HomeSearchResults(results: viewModel.searchResult)
-                                .padding(.top, 20)
+                                .padding(.top, 40)
                                 .transition(.opacity)
                         } else {
                             Messages(title: viewModel.messageTitle, message: viewModel.messageBody)

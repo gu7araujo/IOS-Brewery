@@ -58,7 +58,7 @@ struct DetailsView: View {
                         HStack {
                             Text("Site")
                             Spacer()
-                            Text(site)
+                            Link(site.substring(to: 25), destination: URL(string: site)!)
                         }
                         .padding(.bottom, 15)
 
@@ -74,23 +74,23 @@ struct DetailsView: View {
                             Text("\(street), \(city)")
                         }
                         .padding(.bottom, 15)
+
+                        Rectangle()
+                            .frame(height: 1)
+                            .foregroundColor(.gray)
                     }
 
-                    Rectangle()
-                        .frame(height: 1)
-                        .foregroundColor(.gray)
-
-                    Button {
-                        //
-                    } label: {
-                        Text("Avaliar Cervejaria")
-                    }
-                    .padding(10)
-                    .padding(.horizontal, 30)
-                    .foregroundColor(.black)
-                    .background(Color("Yellow"))
-                    .cornerRadius(5)
-                    .padding(30)
+//                    Button {
+//                        //
+//                    } label: {
+//                        Text("Avaliar Cervejaria")
+//                    }
+//                    .padding(10)
+//                    .padding(.horizontal, 30)
+//                    .foregroundColor(.black)
+//                    .background(Color("Yellow"))
+//                    .cornerRadius(5)
+//                    .padding(30)
                 }
                 .frame(width: geometry.size.width * 0.8)
                 .padding()
