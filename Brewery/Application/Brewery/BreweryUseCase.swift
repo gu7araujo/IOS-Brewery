@@ -16,11 +16,11 @@ public protocol BreweryUseCaseProtocol {
 public class BreweryUseCase: BreweryUseCaseProtocol {
 
     public static var shared: BreweryUseCaseProtocol = BreweryUseCase()
-    private let network: Network
+    private let network: NetworkProtocol
 
     // MARK: - Initialization
 
-    public init(network: Network = HTTPNetworkClient.shared) {
+    public init(network: NetworkProtocol = HTTPNetworkClient.shared) {
         self.network = network
     }
 

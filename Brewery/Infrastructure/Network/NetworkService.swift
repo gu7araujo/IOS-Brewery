@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol Network {
+public protocol NetworkProtocol {
     func sendRequest(parameters: [String: Any]) async -> Result<Data, Error>
 }
 
@@ -15,10 +15,10 @@ enum RequestType: String {
     case getRequest = "GET"
 }
 
-public final class HTTPNetworkClient: Network {
+public final class HTTPNetworkClient: NetworkProtocol {
     private let baseURL = "https://api.openbrewerydb.org/breweries/search"
 
-    public static var shared: Network = HTTPNetworkClient()
+    public static var shared: NetworkProtocol = HTTPNetworkClient()
 
     private init() {}
 
