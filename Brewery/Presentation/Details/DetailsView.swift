@@ -12,93 +12,47 @@ struct DetailsView: View {
     var brewery: Brewery
 
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                RadialGradient(stops: [
-                    .init(color: Color("Yellow"), location: 0.3),
-                    .init(color: Color("WhiteBackground"), location: 0.3)
-                ], center: .top, startRadius: geometry.size.height * 0.1, endRadius: geometry.size.height * 1)
-                    .ignoresSafeArea()
+        NavigationView {
+            VStack {
+                Image(systemName: "\(brewery.name.getFirstLetter()).circle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 80.0, height: 80.0)
+                    .foregroundStyle(.brown, Color("Orange"))
 
-                VStack {
-                    HStack {
-                        Spacer()
-                        Image(systemName: "\(brewery.name.getFirstLetter()).circle.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 80.0, height: 80.0)
-                            .foregroundStyle(.brown, Color("Orange"))
+                Text(brewery.name)
+                    .font(.headline)
 
-                        Spacer()
+                Text("+500 avaliacoes")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
 
-                        VStack {
-                            Text(brewery.name)
-                                .font(.headline)
-                            EvaluationScoring()
-                            Text("+500 avaliacoes")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                        }
-                        Spacer()
-                    }
-                    .padding(.bottom, 30)
-
-                    HStack {
-                        Text("Tipo")
-                        Spacer()
-                        Text(brewery.breweryType)
-                    }
-                    .padding(.bottom, 15)
-
-                    Rectangle()
-                        .frame(height: 1)
-                        .foregroundColor(.gray)
-
-                    if let site = brewery.websiteURL {
-                        HStack {
-                            Text("Site")
-                            Spacer()
-                            Link(site.substring(to: 25), destination: URL(string: site)!)
-                        }
-                        .padding(.bottom, 15)
-
-                        Rectangle()
-                            .frame(height: 1)
-                            .foregroundColor(.gray)
-                    }
-
-                    if let street = brewery.street, let city = brewery.city {
-                        HStack {
-                            Text("Endereço")
-                            Spacer()
-                            Text("\(street), \(city)")
-                        }
-                        .padding(.bottom, 15)
-
-                        Rectangle()
-                            .frame(height: 1)
-                            .foregroundColor(.gray)
-                    }
-
-//                    Button {
-//                        //
-//                    } label: {
-//                        Text("Avaliar Cervejaria")
-//                    }
-//                    .padding(10)
-//                    .padding(.horizontal, 30)
-//                    .foregroundColor(.black)
-//                    .background(Color("Yellow"))
-//                    .cornerRadius(5)
-//                    .padding(30)
+                HStack {
+                    Text("Tipo")
+                    Text(brewery.breweryType)
                 }
-                .frame(width: geometry.size.width * 0.8)
-                .padding()
-                .background(.white)
-                .cornerRadius(15)
-                .shadow(color: .gray, radius: 5, x: 0, y: 5)
+
+                if let site = brewery.websiteURL {
+                    HStack {
+                        Text("Site")
+                        Link(site.substring(to: 25), destination: createURL(site))
+                    }
+                }
+
+                HStack {
+                    Text("Endereço")
+                    Text("\(brewery.street ?? ""), \(brewery.city ?? "")")
+                }
             }
         }
+    }
+
+    func createURL(_ link: String) -> URL {
+        guard let url = URL(string: link) else {
+            fatalError("invalid Link")
+        }
+
+        return url
     }
 }
 

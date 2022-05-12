@@ -15,7 +15,6 @@
 		B737B6772829408D00E93127 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B737B6762829408D00E93127 /* Message.swift */; };
 		B746597428205E41005F9F96 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746597328205E41005F9F96 /* String.swift */; };
 		B75E5A0E2801BE2100944BFF /* Brewery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75E5A0D2801BE2100944BFF /* Brewery.swift */; };
-		B764D807281C14720026DF21 /* CardBrewery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B764D806281C14720026DF21 /* CardBrewery.swift */; };
 		B7972A49282A8A430008DE7A /* BreweryUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7972A48282A8A430008DE7A /* BreweryUseCaseTests.swift */; };
 		B7972A4A282A8A430008DE7A /* Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D055332801CA15002E5228 /* Application.framework */; platformFilter = ios; };
 		B7972A57282A8C500008DE7A /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7972A56282A8C500008DE7A /* NetworkServiceTests.swift */; };
@@ -34,7 +33,6 @@
 		B7DFB6CA27FE032500F1CD4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7DFB6C927FE032500F1CD4E /* Assets.xcassets */; };
 		B7DFB6CD27FE032500F1CD4E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7DFB6CC27FE032500F1CD4E /* Preview Assets.xcassets */; };
 		B7FD0D23281AB38900160086 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FD0D22281AB38900160086 /* DetailsView.swift */; };
-		B7FD0D25281AB58900160086 /* EvaluationScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FD0D24281AB58900160086 /* EvaluationScoring.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,7 +114,6 @@
 		B75E5A052801B94300944BFF /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75E5A0D2801BE2100944BFF /* Brewery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brewery.swift; sourceTree = "<group>"; };
 		B75E5A152801BEF800944BFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B764D806281C14720026DF21 /* CardBrewery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBrewery.swift; sourceTree = "<group>"; };
 		B7972A46282A8A430008DE7A /* ApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7972A48282A8A430008DE7A /* BreweryUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryUseCaseTests.swift; sourceTree = "<group>"; };
 		B7972A54282A8C500008DE7A /* InfrastructureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfrastructureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,7 +131,6 @@
 		B7DFB6C927FE032500F1CD4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7DFB6CC27FE032500F1CD4E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B7FD0D22281AB38900160086 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
-		B7FD0D24281AB58900160086 /* EvaluationScoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationScoring.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,8 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				B718FC4E27FF35BC00662F5C /* CustomTextField.swift */,
-				B7FD0D24281AB58900160086 /* EvaluationScoring.swift */,
-				B764D806281C14720026DF21 /* CardBrewery.swift */,
 				B737B6762829408D00E93127 /* Message.swift */,
 			);
 			path = Components;
@@ -685,12 +679,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7DFB6C827FE032300F1CD4E /* HomeView.swift in Sources */,
-				B7FD0D25281AB58900160086 /* EvaluationScoring.swift in Sources */,
 				B7DFB6C627FE032300F1CD4E /* BreweryApp.swift in Sources */,
 				B737B6772829408D00E93127 /* Message.swift in Sources */,
 				B718FC4F27FF35BC00662F5C /* CustomTextField.swift in Sources */,
 				B7B864DE2803A8E300D23557 /* HomeViewModel.swift in Sources */,
-				B764D807281C14720026DF21 /* CardBrewery.swift in Sources */,
 				B746597428205E41005F9F96 /* String.swift in Sources */,
 				B7FD0D23281AB38900160086 /* DetailsView.swift in Sources */,
 			);
