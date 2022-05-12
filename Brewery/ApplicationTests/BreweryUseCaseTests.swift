@@ -16,7 +16,7 @@ class NetworkMock: NetworkProtocol {
         self.isSuccess = isSuccess
     }
 
-    func sendRequest(parameters: [String : Any]) async -> Result<Data, Error> {
+    func sendRequest(parameters: [String: Any]) async -> Result<Data, Error> {
         switch isSuccess {
         case true:
             return .success("testData".data(using: .ascii)!)
@@ -25,7 +25,6 @@ class NetworkMock: NetworkProtocol {
         }
     }
 }
-
 
 class BreweryUseCaseTests: XCTestCase {
 
