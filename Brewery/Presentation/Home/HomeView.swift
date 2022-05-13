@@ -20,41 +20,50 @@ struct HomeView: View {
 
                     TextField("Buscar local", text: $viewModel.searchText)
                 }
+                .padding()
                 Spacer()
 
                 if viewModel.showingResult {
                     VStack(alignment: .leading) {
-                        Text("Segundo a opinião dos usuários:")
-                        Text("Exibindo \(viewModel.searchResult.count) resultados.")
-                            .font(.footnote)
+                        VStack(alignment: .leading) {
+                            Text("Segundo a opinião dos usuários:")
+                            Text("Exibindo \(viewModel.searchResult.count) resultados.")
+                                .font(.footnote)
+                        }
+                        .padding(.horizontal)
 
-                        ScrollView(showsIndicators: false) {
-                            LazyVStack {
-                                ForEach(viewModel.searchResult, id: \.id) { result in
-                                    NavigationLink {
-                                        DetailsView(brewery: result)
-                                    } label: {
-                                        HStack {
-                                            Image(systemName: "\(result.name.getFirstLetter()).circle.fill")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 40.0, height: 40.0)
-                                                .foregroundStyle(.brown, Color("Orange"))
+                        List {
+                            ForEach(viewModel.searchResult, id: \.id) { result in
+                                NavigationLink {
+                                    DetailsView(brewery: result)
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "\(result.name.getFirstLetter()).circle.fill")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 40.0, height: 40.0)
+                                            .foregroundStyle(Color("Yellow"))
+
+                                        VStack(alignment: .leading) {
                                             Text(result.name)
                                                 .font(.headline)
-                                            Text("Tipo \(result.breweryType)")
+
+                                            Text("Tipo: \(result.breweryType)")
+                                                .foregroundColor(.secondary)
                                         }
                                     }
                                 }
                             }
                         }
+                        .listStyle(PlainListStyle())
                     }
                 } else {
                     Messages(title: viewModel.messageTitle, message: viewModel.messageBody)
+                        .padding(.horizontal)
                 }
                 Spacer()
             }
-            .padding(.horizontal)
+            .navigationBarTitle("Brewery")
             .onAppear {
                 guard viewModel.searchText.isEmpty else {
                     return
@@ -65,6 +74,7 @@ struct HomeView: View {
                 viewModel.onSubmit()
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

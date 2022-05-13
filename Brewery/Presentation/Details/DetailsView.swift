@@ -12,39 +12,38 @@ struct DetailsView: View {
     var brewery: Brewery
 
     var body: some View {
-        NavigationView {
-            VStack {
-                Image(systemName: "\(brewery.name.getFirstLetter()).circle.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 80.0, height: 80.0)
-                    .foregroundStyle(.brown, Color("Orange"))
+        VStack {
+            Image(systemName: "\(brewery.name.getFirstLetter()).circle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 80.0, height: 80.0)
+                .foregroundStyle(Color("Yellow"))
 
-                Text(brewery.name)
-                    .font(.headline)
+            Text(brewery.name)
+                .font(.headline)
 
-                Text("+500 avaliacoes")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+            Text("+500 avaliacoes")
+                .font(.caption)
+                .foregroundColor(.secondary)
 
+            HStack {
+                Text("Tipo")
+                Text(brewery.breweryType)
+            }
+
+            if let site = brewery.websiteURL {
                 HStack {
-                    Text("Tipo")
-                    Text(brewery.breweryType)
-                }
-
-                if let site = brewery.websiteURL {
-                    HStack {
-                        Text("Site")
-                        Link(site.substring(to: 25), destination: createURL(site))
-                    }
-                }
-
-                HStack {
-                    Text("Endereço")
-                    Text("\(brewery.street ?? ""), \(brewery.city ?? "")")
+                    Text("Site")
+                    Link(site, destination: createURL(site))
                 }
             }
+
+            HStack {
+                Text("Endereço")
+                Text("\(brewery.street ?? ""), \(brewery.city ?? "")")
+            }
         }
+        .padding(.horizontal)
     }
 
     func createURL(_ link: String) -> URL {
