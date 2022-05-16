@@ -15,6 +15,8 @@
 		B737B6772829408D00E93127 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B737B6762829408D00E93127 /* Message.swift */; };
 		B746597428205E41005F9F96 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746597328205E41005F9F96 /* String.swift */; };
 		B75E5A0E2801BE2100944BFF /* Brewery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75E5A0D2801BE2100944BFF /* Brewery.swift */; };
+		B77726122832DDAE004F4014 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77726112832DDAE004F4014 /* RatingView.swift */; };
+		B77726142832DE29004F4014 /* RatingStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77726132832DE29004F4014 /* RatingStar.swift */; };
 		B7972A49282A8A430008DE7A /* BreweryUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7972A48282A8A430008DE7A /* BreweryUseCaseTests.swift */; };
 		B7972A4A282A8A430008DE7A /* Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D055332801CA15002E5228 /* Application.framework */; platformFilter = ios; };
 		B7972A57282A8C500008DE7A /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7972A56282A8C500008DE7A /* NetworkServiceTests.swift */; };
@@ -114,6 +116,8 @@
 		B75E5A052801B94300944BFF /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75E5A0D2801BE2100944BFF /* Brewery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brewery.swift; sourceTree = "<group>"; };
 		B75E5A152801BEF800944BFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B77726112832DDAE004F4014 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		B77726132832DE29004F4014 /* RatingStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingStar.swift; sourceTree = "<group>"; };
 		B7972A46282A8A430008DE7A /* ApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7972A48282A8A430008DE7A /* BreweryUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryUseCaseTests.swift; sourceTree = "<group>"; };
 		B7972A54282A8C500008DE7A /* InfrastructureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfrastructureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +203,7 @@
 			children = (
 				B718FC4E27FF35BC00662F5C /* CustomTextField.swift */,
 				B737B6762829408D00E93127 /* Message.swift */,
+				B77726132832DE29004F4014 /* RatingStar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -362,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				B7FD0D22281AB38900160086 /* DetailsView.swift */,
+				B77726112832DDAE004F4014 /* RatingView.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -681,9 +687,11 @@
 				B7DFB6C827FE032300F1CD4E /* HomeView.swift in Sources */,
 				B7DFB6C627FE032300F1CD4E /* BreweryApp.swift in Sources */,
 				B737B6772829408D00E93127 /* Message.swift in Sources */,
+				B77726122832DDAE004F4014 /* RatingView.swift in Sources */,
 				B718FC4F27FF35BC00662F5C /* CustomTextField.swift in Sources */,
 				B7B864DE2803A8E300D23557 /* HomeViewModel.swift in Sources */,
 				B746597428205E41005F9F96 /* String.swift in Sources */,
+				B77726142832DE29004F4014 /* RatingStar.swift in Sources */,
 				B7FD0D23281AB38900160086 /* DetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,6 +11,9 @@ import Domain
 struct DetailsView: View {
     var brewery: Brewery
 
+    @State private var alreadyEvaluated = false
+    @State private var showingRatingView = false
+
     var body: some View {
         VStack {
             Image(systemName: "\(brewery.name.getFirstLetter()).circle.fill")
@@ -22,7 +25,7 @@ struct DetailsView: View {
             Text(brewery.name)
                 .font(.headline)
 
-            Text("+500 avaliacoes")
+            Text("+500 avaliações")
                 .font(.caption)
                 .foregroundColor(.secondary)
 
@@ -42,8 +45,32 @@ struct DetailsView: View {
                 Text("Endereço")
                 Text("\(brewery.street ?? ""), \(brewery.city ?? "")")
             }
+
+            if alreadyEvaluated {
+                Text("Você já avaliou está cervejaria!")
+                    .padding(10)
+                    .foregroundColor(.green)
+            } else {
+                Button {
+                    showingRatingView.toggle()
+                } label: {
+                    Text("Avaliar")
+                        .padding(10)
+                        .padding(.horizontal, 20)
+                        .background(.yellow)
+                        .cornerRadius(10)
+                        .foregroundColor(.black)
+                }
+                .sheet(isPresented: $showingRatingView, onDismiss: feedbackFromRating) {
+                    RatingView()
+                }
+            }
         }
         .padding(.horizontal)
+    }
+
+    func feedbackFromRating() {
+        print("Voltei da avaliacao")
     }
 
     func createURL(_ link: String) -> URL {
