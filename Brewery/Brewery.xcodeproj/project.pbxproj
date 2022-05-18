@@ -242,7 +242,6 @@
 		B7972A47282A8A430008DE7A /* ApplicationTests */ = {
 			isa = PBXGroup;
 			children = (
-				B7972A5E282A94730008DE7A /* Mock */,
 				B7972A48282A8A430008DE7A /* BreweryUseCaseTests.swift */,
 			);
 			path = ApplicationTests;
@@ -254,13 +253,6 @@
 				B7972A56282A8C500008DE7A /* NetworkServiceTests.swift */,
 			);
 			path = InfrastructureTests;
-			sourceTree = "<group>";
-		};
-		B7972A5E282A94730008DE7A /* Mock */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Mock;
 			sourceTree = "<group>";
 		};
 		B7B864E42803BBA800D23557 /* Erros */ = {

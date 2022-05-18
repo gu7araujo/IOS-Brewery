@@ -10,7 +10,7 @@ import XCTest
 
 class NetworkServiceTests: XCTestCase {
 
-    var api: Network?
+    var api: NetworkProtocol?
 
     override func setUp() {
         super.setUp()
