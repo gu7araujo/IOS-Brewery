@@ -9,10 +9,18 @@ import SwiftUI
 import Domain
 
 struct DetailsView: View {
-    var brewery: Brewery
+    let brewery: Brewery
 
     @State private var alreadyEvaluated = false
     @State private var showingRatingView = false
+
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest var rating: FetchedResults<Rating>
+
+    init(_ brewery: Brewery) {
+        self.brewery = brewery
+        self._rating = FetchRequest(entity: Rating.entity(), sortDescriptors: [], predicate: NSPredicate(format: "brewery_id == %@", brewery.id))
+    }
 
     var body: some View {
         VStack {
@@ -62,18 +70,27 @@ struct DetailsView: View {
                         .foregroundColor(.black)
                 }
                 .sheet(isPresented: $showingRatingView, onDismiss: feedbackFromRating) {
-                    RatingView()
+                    RatingView(breweryId: brewery.id)
                 }
             }
         }
         .padding(.horizontal)
+        .onAppear {
+            alreadyContainsRating()
+        }
     }
 
-    func feedbackFromRating() {
-        print("Voltei da avaliacao")
+    private func alreadyContainsRating() {
+        if !rating.isEmpty {
+            alreadyEvaluated = true
+        }
     }
 
-    func createURL(_ link: String) -> URL {
+    private func feedbackFromRating() {
+        alreadyContainsRating()
+    }
+
+    private func createURL(_ link: String) -> URL {
         guard let url = URL(string: link) else {
             fatalError("invalid Link")
         }
@@ -87,6 +104,6 @@ struct SwiftUIView_Previews: PreviewProvider {
     static let brewery = Brewery(id: "1", name: "Cervejaria Teste 1234", breweryType: "Pub", street: "Rua Mario Campos 381", city: "Sao Paulo", state: "MG", postalCode: "35610-000", country: "Brazil", longitude: nil, latitude: nil, phone: "(37) 3551-1513", websiteURL: "www.site.com.br", updatedAt: "2022-05-01", createdAt: "2022-05-01")
 
     static var previews: some View {
-        DetailsView(brewery: brewery)
+        DetailsView(brewery)
     }
 }

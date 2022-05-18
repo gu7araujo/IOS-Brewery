@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Domain
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
@@ -35,7 +34,7 @@ struct HomeView: View {
                         List {
                             ForEach(viewModel.searchResult, id: \.id) { result in
                                 NavigationLink {
-                                    DetailsView(brewery: result)
+                                    DetailsView(result)
                                 } label: {
                                     HStack {
                                         Image(systemName: "\(result.name.getFirstLetter()).circle.fill")

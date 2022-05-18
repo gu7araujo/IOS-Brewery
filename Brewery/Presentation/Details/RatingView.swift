@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct RatingView: View {
+    let breweryId: String
+
     @State private var rating = 2
     @State private var email = ""
     @State private var isSuccess = false
     @State private var isError = false
+
+    @Environment(\.managedObjectContext) var moc
 
     var body: some View {
         VStack {
@@ -45,17 +49,24 @@ struct RatingView: View {
         .padding(.horizontal)
     }
 
-    func saveRating() {
-        // send request ?
-        // sabe in coreDate ?
+    private func saveRating() {
+        let newRating = Rating(context: moc)
+        newRating.id = UUID()
+        newRating.email = email
+        newRating.rating = Int16(rating)
+        newRating.brewery_id = breweryId
 
-//        isError = true
-        isSuccess = true
+        do {
+            try moc.save()
+            isSuccess = true
+        } catch {
+            isError = true
+        }
     }
 }
 
 struct RatingView_Previews: PreviewProvider {
     static var previews: some View {
-        RatingView()
+        RatingView(breweryId: "aaa")
     }
 }
