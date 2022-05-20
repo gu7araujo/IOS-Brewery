@@ -21,8 +21,11 @@
 		B7972A4A282A8A430008DE7A /* Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D055332801CA15002E5228 /* Application.framework */; platformFilter = ios; };
 		B7972A57282A8C500008DE7A /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7972A56282A8C500008DE7A /* NetworkServiceTests.swift */; };
 		B7972A58282A8C500008DE7A /* Infrastructure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D055462801D6FE002E5228 /* Infrastructure.framework */; platformFilter = ios; };
-		B7ACDBD72835185200A05320 /* Brewery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7ACDBD52835185200A05320 /* Brewery.xcdatamodeld */; };
-		B7ACDBD92835188A00A05320 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ACDBD82835188A00A05320 /* Persistence.swift */; };
+		B7A3D3022837B60600695BE3 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3D3012837B60600695BE3 /* Rating.swift */; };
+		B7A3D3052837B86100695BE3 /* SaveRatingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3D3042837B86100695BE3 /* SaveRatingUseCase.swift */; };
+		B7A3D3082837B98800695BE3 /* CoreDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3D3072837B98800695BE3 /* CoreDataBase.swift */; };
+		B7A3D30A2837BFD700695BE3 /* GetRatingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3D3092837BFD700695BE3 /* GetRatingUseCase.swift */; };
+		B7A3D30C2837C4BE00695BE3 /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3D30B2837C4BE00695BE3 /* DatabaseError.swift */; };
 		B7B864DE2803A8E300D23557 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B864DD2803A8E300D23557 /* HomeViewModel.swift */; };
 		B7B864E32803B52E00D23557 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B864E22803B52E00D23557 /* NetworkError.swift */; };
 		B7B864E62803BBBA00D23557 /* ProjectError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B864E52803BBBA00D23557 /* ProjectError.swift */; };
@@ -124,8 +127,11 @@
 		B7972A48282A8A430008DE7A /* BreweryUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryUseCaseTests.swift; sourceTree = "<group>"; };
 		B7972A54282A8C500008DE7A /* InfrastructureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfrastructureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7972A56282A8C500008DE7A /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
-		B7ACDBD62835185200A05320 /* Brewery.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Brewery.xcdatamodel; sourceTree = "<group>"; };
-		B7ACDBD82835188A00A05320 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = SOURCE_ROOT; };
+		B7A3D3012837B60600695BE3 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		B7A3D3042837B86100695BE3 /* SaveRatingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRatingUseCase.swift; sourceTree = "<group>"; };
+		B7A3D3072837B98800695BE3 /* CoreDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBase.swift; sourceTree = "<group>"; };
+		B7A3D3092837BFD700695BE3 /* GetRatingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRatingUseCase.swift; sourceTree = "<group>"; };
+		B7A3D30B2837C4BE00695BE3 /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
 		B7B864DD2803A8E300D23557 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B7B864E22803B52E00D23557 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B7B864E52803BBBA00D23557 /* ProjectError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectError.swift; sourceTree = "<group>"; };
@@ -232,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				B75E5A0D2801BE2100944BFF /* Brewery.swift */,
+				B7A3D3012837B60600695BE3 /* Rating.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -259,6 +266,24 @@
 			path = InfrastructureTests;
 			sourceTree = "<group>";
 		};
+		B7A3D3032837B85000695BE3 /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				B7A3D3042837B86100695BE3 /* SaveRatingUseCase.swift */,
+				B7A3D3092837BFD700695BE3 /* GetRatingUseCase.swift */,
+			);
+			path = Rating;
+			sourceTree = "<group>";
+		};
+		B7A3D3062837B96800695BE3 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				B7A3D3072837B98800695BE3 /* CoreDataBase.swift */,
+				B7A3D30B2837C4BE00695BE3 /* DatabaseError.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		B7B864E42803BBA800D23557 /* Erros */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +295,7 @@
 		B7D055342801CA15002E5228 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				B7A3D3032837B85000695BE3 /* Rating */,
 				B7B864E42803BBA800D23557 /* Erros */,
 				B7D0553E2801CA65002E5228 /* Brewery */,
 			);
@@ -287,6 +313,7 @@
 		B7D055472801D6FE002E5228 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				B7A3D3062837B96800695BE3 /* Database */,
 				B7D055512801D70D002E5228 /* Network */,
 			);
 			path = Infrastructure;
@@ -304,8 +331,6 @@
 		B7D0555E2801E51E002E5228 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				B7ACDBD82835188A00A05320 /* Persistence.swift */,
-				B7ACDBD52835185200A05320 /* Brewery.xcdatamodeld */,
 				B75E5A152801BEF800944BFF /* Info.plist */,
 				B7DFB6C927FE032500F1CD4E /* Assets.xcassets */,
 				B7DFB6CB27FE032500F1CD4E /* Preview Content */,
@@ -640,6 +665,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7A3D3022837B60600695BE3 /* Rating.swift in Sources */,
 				B75E5A0E2801BE2100944BFF /* Brewery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -665,7 +691,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7D055402801CA90002E5228 /* BreweryUseCase.swift in Sources */,
+				B7A3D3052837B86100695BE3 /* SaveRatingUseCase.swift in Sources */,
 				B7B864E62803BBBA00D23557 /* ProjectError.swift in Sources */,
+				B7A3D30A2837BFD700695BE3 /* GetRatingUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,6 +701,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7A3D3082837B98800695BE3 /* CoreDataBase.swift in Sources */,
+				B7A3D30C2837C4BE00695BE3 /* DatabaseError.swift in Sources */,
 				B7D055532801D71C002E5228 /* NetworkService.swift in Sources */,
 				B7B864E32803B52E00D23557 /* NetworkError.swift in Sources */,
 			);
@@ -682,10 +712,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7ACDBD92835188A00A05320 /* Persistence.swift in Sources */,
 				B7DFB6C827FE032300F1CD4E /* HomeView.swift in Sources */,
 				B7DFB6C627FE032300F1CD4E /* BreweryApp.swift in Sources */,
-				B7ACDBD72835185200A05320 /* Brewery.xcdatamodeld in Sources */,
 				B737B6772829408D00E93127 /* Message.swift in Sources */,
 				B77726122832DDAE004F4014 /* RatingView.swift in Sources */,
 				B718FC4F27FF35BC00662F5C /* CustomTextField.swift in Sources */,
@@ -1244,20 +1272,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		B7ACDBD52835185200A05320 /* Brewery.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				B7ACDBD62835185200A05320 /* Brewery.xcdatamodel */,
-			);
-			currentVersion = B7ACDBD62835185200A05320 /* Brewery.xcdatamodel */;
-			name = Brewery.xcdatamodeld;
-			path = ../Brewery.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = B7DFB6BA27FE032300F1CD4E /* Project object */;
 }

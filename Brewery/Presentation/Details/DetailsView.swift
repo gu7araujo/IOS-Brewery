@@ -7,19 +7,17 @@
 
 import SwiftUI
 import Domain
+import Application
 
 struct DetailsView: View {
     let brewery: Brewery
 
     @State private var alreadyEvaluated = false
     @State private var showingRatingView = false
-
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest var rating: FetchedResults<Rating>
+    @State private var showingAlertError = false
 
     init(_ brewery: Brewery) {
         self.brewery = brewery
-        self._rating = FetchRequest(entity: Rating.entity(), sortDescriptors: [], predicate: NSPredicate(format: "brewery_id == %@", brewery.id))
     }
 
     var body: some View {
@@ -75,14 +73,25 @@ struct DetailsView: View {
             }
         }
         .padding(.horizontal)
+        .alert("Erro", isPresented: $showingAlertError) {
+            Button("OK") { }
+        } message: {
+            Text(ProjectError.handleGetRatingError.localizedDescription)
+        }
         .onAppear {
             alreadyContainsRating()
         }
     }
 
     private func alreadyContainsRating() {
-        if !rating.isEmpty {
+        let useCase = GetRatingUseCase()
+        let response = useCase.execute(breweryId: brewery.id)
+
+        switch response {
+        case .success:
             alreadyEvaluated = true
+        case .failure:
+            showingAlertError = true
         }
     }
 

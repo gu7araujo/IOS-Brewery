@@ -6,16 +6,16 @@
 //
 
 import SwiftUI
+import Domain
+import Application
 
 struct RatingView: View {
     let breweryId: String
 
-    @State private var rating = 2
     @State private var email = ""
+    @State private var rating = 2
     @State private var isSuccess = false
     @State private var isError = false
-
-    @Environment(\.managedObjectContext) var moc
 
     var body: some View {
         VStack {
@@ -50,16 +50,14 @@ struct RatingView: View {
     }
 
     private func saveRating() {
-        let newRating = Rating(context: moc)
-        newRating.id = UUID()
-        newRating.email = email
-        newRating.rating = Int16(rating)
-        newRating.brewery_id = breweryId
+        let newRating = Rating(email: email, rating: Int16(rating), breweryId: breweryId)
+        let useCase = SaveRatingUseCase()
 
-        do {
-            try moc.save()
+        let response = useCase.execute(rating: newRating)
+        switch response {
+        case .success:
             isSuccess = true
-        } catch {
+        case .failure:
             isError = true
         }
     }

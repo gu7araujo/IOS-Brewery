@@ -9,12 +9,9 @@ import SwiftUI
 
 @main
 struct BreweryApp: App {
-    let persistenceContainer = PersistenceController.shared
-
     var body: some Scene {
         WindowGroup {
             HomeView()
-                .environment(\.managedObjectContext, persistenceContainer.container.viewContext)
         }
     }
 }
