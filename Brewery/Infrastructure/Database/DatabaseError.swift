@@ -8,5 +8,5 @@
 import Foundation
 
 public enum DatabaseError: LocalizedError {
-    case failureToGetElement
+    case notContainRating
 }

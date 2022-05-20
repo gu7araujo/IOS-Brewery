@@ -25,13 +25,13 @@ public class GetRatingUseCase: GetRatingUseCaseProtocol {
     // MARK: - Public methods
 
     public func execute(breweryId: String) -> Result<Rating, Error> {
-        let result = database.getSpecificByBreweryId(id: breweryId)
+        let result = database.getSpecificRatingByBreweryId(id: breweryId)
 
         switch result {
         case .success(let rating):
             return . success(rating)
         case .failure(let error):
-            if error as? DatabaseError == DatabaseError.failureToGetElement {
+            if error as? DatabaseError == DatabaseError.notContainRating {
                 return .failure(ProjectError.handleGetRatingError)
             }
             return .failure(error)

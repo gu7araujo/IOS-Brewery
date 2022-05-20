@@ -25,7 +25,7 @@ public class SaveRatingUseCase: SaveRatingUseCaseProtocol {
     // MARK: - Public methods
 
     public func execute(rating: Rating) -> Result<Rating, Error> {
-        let result = database.save(data: rating)
+        let result = database.saveRating(rating)
 
         switch result {
         case .success(let rating):

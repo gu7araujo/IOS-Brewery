@@ -14,7 +14,6 @@ struct DetailsView: View {
 
     @State private var alreadyEvaluated = false
     @State private var showingRatingView = false
-    @State private var showingAlertError = false
 
     init(_ brewery: Brewery) {
         self.brewery = brewery
@@ -67,17 +66,12 @@ struct DetailsView: View {
                         .cornerRadius(10)
                         .foregroundColor(.black)
                 }
-                .sheet(isPresented: $showingRatingView, onDismiss: feedbackFromRating) {
+                .sheet(isPresented: $showingRatingView, onDismiss: alreadyContainsRating) {
                     RatingView(breweryId: brewery.id)
                 }
             }
         }
         .padding(.horizontal)
-        .alert("Erro", isPresented: $showingAlertError) {
-            Button("OK") { }
-        } message: {
-            Text(ProjectError.handleGetRatingError.localizedDescription)
-        }
         .onAppear {
             alreadyContainsRating()
         }
@@ -90,13 +84,8 @@ struct DetailsView: View {
         switch response {
         case .success:
             alreadyEvaluated = true
-        case .failure:
-            showingAlertError = true
+        default: break
         }
-    }
-
-    private func feedbackFromRating() {
-        alreadyContainsRating()
     }
 
     private func createURL(_ link: String) -> URL {

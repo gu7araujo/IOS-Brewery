@@ -9,28 +9,28 @@ import Foundation
 import Domain
 
 public protocol DatabaseProtocol {
-    func save(data: Rating) -> Result<Rating, Error>
-    func getSpecificByBreweryId(id: String) -> Result<Rating, Error>
+    func saveRating(_ element: Rating) -> Result<Rating, Error>
+    func getSpecificRatingByBreweryId(id: String) -> Result<Rating, Error>
 }
 
 public final class CoreDataBase: DatabaseProtocol {
 
     private var arrayData: [Rating] = []
 
-    public static var shared: DatabaseProtocol = CoreDataBase()
+    public static var shared = CoreDataBase()
 
     private init() { }
 
-    public func save(data: Rating) -> Result<Rating, Error> {
-        arrayData.append(data)
-        return .success(data)
+    public func saveRating(_ element: Rating) -> Result<Rating, Error> {
+        arrayData.append(element)
+        return .success(element)
     }
 
-    public func getSpecificByBreweryId(id: String) -> Result<Rating, Error> {
+    public func getSpecificRatingByBreweryId(id: String) -> Result<Rating, Error> {
         if let element = arrayData.first(where: {$0.breweryId == id}) {
             return .success(element)
         } else {
-            return .failure(DatabaseError.failureToGetElement)
+            return .failure(DatabaseError.notContainRating)
         }
     }
 }
