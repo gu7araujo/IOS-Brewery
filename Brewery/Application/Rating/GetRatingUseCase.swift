@@ -14,18 +14,18 @@ public protocol GetRatingUseCaseProtocol {
 
 public class GetRatingUseCase: GetRatingUseCaseProtocol {
 
-    private let database: DatabaseProtocol
+    private var database = SingletonCoreDataBase.shared.database
 
     // MARK: - Initialization
 
-    public init(database: DatabaseProtocol = CoreDataBase.shared) {
-        self.database = database
-    }
+    public init() { }
 
     // MARK: - Public methods
 
     public func execute(breweryId: String) -> Result<Rating, Error> {
-        let result = database.getSpecificRatingByBreweryId(id: breweryId)
+        let result = database.getSpecific(id: breweryId) { rating in
+            rating.breweryId == breweryId
+        }
 
         switch result {
         case .success(let rating):

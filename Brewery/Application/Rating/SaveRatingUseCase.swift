@@ -14,24 +14,22 @@ public protocol SaveRatingUseCaseProtocol {
 
 public class SaveRatingUseCase: SaveRatingUseCaseProtocol {
 
-    private let database: DatabaseProtocol
+    private var database = SingletonCoreDataBase.shared.database
 
     // MARK: - Initialization
 
-    public init(database: DatabaseProtocol = CoreDataBase.shared) {
-        self.database = database
-    }
+    public init() { }
 
     // MARK: - Public methods
 
     public func execute(rating: Rating) -> Result<Rating, Error> {
-        let result = database.saveRating(rating)
-
-        switch result {
-        case .success(let rating):
-            return .success(rating)
-        case .failure(let error):
-            return .failure(error)
-        }
+        database.save(rating)
+        return .success(rating)
     }
+}
+
+public class SingletonCoreDataBase {
+    private init() { }
+    public static var shared = SingletonCoreDataBase()
+    public let database = CoreDataBase<Rating>()
 }
